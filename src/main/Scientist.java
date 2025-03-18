@@ -13,6 +13,22 @@ public class Scientist {
         this.awards = awards;
     }
 
+    public String getName() {
+        return  name;
+    }
+
+    public String getFieldOfWork() {
+        return  fieldOfWork;
+    }
+
+    public String getActiveYears() {
+        return  activeYears;
+    }
+
+    public String getAwards() {
+        return  awards;
+    }
+
     public String getBasicInfo() {
         return name + " (" + activeYears + ")";
     }

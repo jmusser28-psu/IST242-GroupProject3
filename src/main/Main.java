@@ -21,29 +21,29 @@ public class Main {
 
         boolean run = true;
         byte userChoice = 0;
-        while (run) {
-            System.out.println("---Scientists---");
-            System.out.println("0.) Exit");
-            System.out.println("1.) Option 1");
-            System.out.println("2.) Option 2");
-            System.out.println("3.) Option 3");
-            userChoice = scnr.nextByte();
-            if (userChoice == 0) {
-                run = false;
-            }
-            else if (userChoice == 1) {
-
-            }
-            else if (userChoice == 2) {
-
-            }
-            else if (userChoice == 3) {
-
-            }
-            else {
-                System.out.printf("Invalid choice %d\n", userChoice);
-            }
-        }
+//        while (run) {
+//            System.out.println("---Scientists---");
+//            System.out.println("0.) Exit");
+//            System.out.println("1.) Option 1");
+//            System.out.println("2.) Option 2");
+//            System.out.println("3.) Option 3");
+//            userChoice = scnr.nextByte();
+//            if (userChoice == 0) {
+//                run = false;
+//            }
+//            else if (userChoice == 1) {
+//
+//            }
+//            else if (userChoice == 2) {
+//
+//            }
+//            else if (userChoice == 3) {
+//
+//            }
+//            else {
+//                System.out.printf("Invalid choice %d\n", userChoice);
+//            }
+//        }
 
         String personInfo = "";
         while ((personInfo = reader.readLine()) != null) {
@@ -58,29 +58,18 @@ public class Main {
             String bookPublications = scientistInfo[6];
 
             if (profession.equalsIgnoreCase("Mathematician")) {
-                mathematician.add(name);
+                scientistManager.addScientist(name, fieldOfWork, activeYears,awards);
             }
             if (profession.equalsIgnoreCase("Philosopher")) {
-                philosopher.add(name);
+                scientistManager.addScientist(name, fieldOfWork, activeYears,awards);
             }
             if (profession.equalsIgnoreCase("Logician")) {
-                logician.add(name);
+                scientistManager.addLogician(name, fieldOfWork, activeYears, awards, profession, journalArticles, bookPublications);
             }
         }
 
-        System.out.println("Mathematicians ");
-        for (int i = 0; i < mathematician.size(); i++) {
-            System.out.print(mathematician.get(i) + ", ");
-        }
-
-        System.out.println("Philosophers ");
-        for (int i = 0; i < philosopher.size(); i++) {
-            System.out.print(philosopher.get(i) + ", ");
-        }
-
-        System.out.println("Logicians ");
-        for (int i = 0; i < logician.size(); i++) {
-            System.out.print(logician.get(i) + ", ");
-        }
+        scientistManager.listScientists();
+        System.out.println("----------------------");
+        scientistManager.listLogicians();
     }
 }
