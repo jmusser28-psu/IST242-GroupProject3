@@ -1,14 +1,14 @@
-package main;
+package scientists;
 
 public class Scientist {
     private String name;
     private String activeYears;
-    private String fieldOfWork;
+    private String profession;
     private String awards;
 
-    public Scientist(String name, String fieldOfWork, String activeYears, String awards) {
+    public Scientist(String name, String profession, String activeYears, String awards) {
         this.name = name;
-        this.fieldOfWork = fieldOfWork;
+        this.profession = profession;
         this.activeYears = activeYears;
         this.awards = awards;
     }
@@ -17,8 +17,8 @@ public class Scientist {
         return  name;
     }
 
-    public String getFieldOfWork() {
-        return  fieldOfWork;
+    public String getProfession() {
+        return profession;
     }
 
     public String getActiveYears() {
@@ -34,9 +34,6 @@ public class Scientist {
     }
 
     public String getProfessionInfo() {
-        return getBasicInfo() + " | Field: " + fieldOfWork + " | Awards: " + awards;
+        return getBasicInfo() + " | Profession: " + profession + " | Awards: " + awards;
     }
-
-
-
 }

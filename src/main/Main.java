@@ -1,5 +1,7 @@
 package main;
 
+import scientists.ScientistManager;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -57,19 +59,19 @@ public class Main {
             String journalArticles = scientistInfo[5];
             String bookPublications = scientistInfo[6];
 
+            scientistManager.addScientist(name, fieldOfWork, activeYears, awards);
+
             if (profession.equalsIgnoreCase("Mathematician")) {
-                scientistManager.addScientist(name, fieldOfWork, activeYears,awards);
+                scientistManager.addMathematician(name, profession, activeYears, awards, fieldOfWork, journalArticles, bookPublications);
             }
             if (profession.equalsIgnoreCase("Philosopher")) {
-                scientistManager.addScientist(name, fieldOfWork, activeYears,awards);
+                scientistManager.addPhilosopher(name, profession, activeYears, awards, fieldOfWork, journalArticles, bookPublications);
             }
             if (profession.equalsIgnoreCase("Logician")) {
-                scientistManager.addLogician(name, fieldOfWork, activeYears, awards, profession, journalArticles, bookPublications);
+                scientistManager.addLogician(name, profession, activeYears, awards, fieldOfWork, journalArticles, bookPublications);
             }
         }
+        scientistManager.getScientists();
 
-        scientistManager.listScientists();
-        System.out.println("----------------------");
-        scientistManager.listLogicians();
     }
 }
