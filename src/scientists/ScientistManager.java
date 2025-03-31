@@ -22,23 +22,28 @@ public class ScientistManager {
     public void addLogician(String name, String fieldOfWork, String activeYears, String awards, String profession,
                             String journalArticles, String bookPublications) {
         logicians.add(new Logician(name, fieldOfWork, activeYears, awards, profession, journalArticles, bookPublications));
+        addScientist(name, fieldOfWork, activeYears, awards);
     }
 
     public void addMathematician(String name, String fieldOfWork, String activeYears, String awards, String profession,
                             String journalArticles, String bookPublications) {
         mathematicians.add(new Mathematician(name, fieldOfWork, activeYears, awards, profession, journalArticles, bookPublications));
+        addScientist(name, fieldOfWork, activeYears, awards);
     }
 
     public void addPhilosopher(String name, String fieldOfWork, String activeYears, String awards, String profession,
                                  String journalArticles, String bookPublications) {
         philosophers.add(new Philosopher(name, fieldOfWork, activeYears, awards, profession, journalArticles, bookPublications));
+        addScientist(name, fieldOfWork, activeYears, awards);
     }
 
     public void removeScientist() {
         byte choice = 0;
         Scanner scnr = new Scanner(System.in);
         listScientists();
+        System.out.print("Who would you like to remove (Number associated with Scientist): ");
         choice = scnr.nextByte();
+        scnr.nextLine();
         choice -= 1;
         String scientist = scientists.get(choice).getName();
         scientists.remove(choice);
