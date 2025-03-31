@@ -121,7 +121,7 @@ public class ScientistManager {
         FileWriter fw = null;
         BufferedWriter writer = null;
         try {
-            fw = new FileWriter("scientistdata1.csv");
+            fw = new FileWriter("scientistdata.csv");
             writer = new BufferedWriter(fw);
 
             writer.write("Name,Profession,Field of Work,Active Years,Awards,Journal Articles,Book Publications\n");
