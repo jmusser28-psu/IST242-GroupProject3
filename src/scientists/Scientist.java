@@ -29,11 +29,7 @@ public class Scientist {
         return  awards;
     }
 
-    public String getBasicInfo() {
+    public String getInfo(String type) {
         return name + " (" + activeYears + ")";
-    }
-
-    public String getProfessionInfo() {
-        return getBasicInfo() + " | Profession: " + profession + " | Awards: " + awards;
     }
 }

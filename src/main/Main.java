@@ -5,7 +5,6 @@ import scientists.ScientistManager;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -16,10 +15,6 @@ public class Main {
         Scanner scnr = new Scanner(System.in);
 
         ScientistManager scientistManager = new ScientistManager();
-
-        ArrayList<String> mathematician = new ArrayList<>();
-        ArrayList<String> philosopher = new ArrayList<>();
-        ArrayList<String> logician = new ArrayList<>();
 
         String personInfo = "";
         while ((personInfo = reader.readLine()) != null) {
@@ -67,6 +62,8 @@ public class Main {
                     System.out.println("2.) List Mathematicians");
                     System.out.println("3.) List Philosophers");
                     System.out.println("4.) List Logicians");
+                    System.out.println("5.) List by Profession");
+                    System.out.println("6.) List by Field of Work");
                     System.out.print("Choice? ");
                     userChoice = scnr.nextByte();
                     scnr.nextLine();
@@ -84,6 +81,12 @@ public class Main {
                     }
                     else if (userChoice == 4) {
                         scientistManager.listLogicians();
+                    }
+                    else if (userChoice == 5) {
+                        scientistManager.getScientistsByProfession();
+                    }
+                    else if (userChoice == 6) {
+                        scientistManager.getScientistsByField();
                     }
                     else {
                         System.out.printf("Invalid choice: %d\n", userChoice);
@@ -111,6 +114,7 @@ public class Main {
 
                     if (userChoice == 0) {
                         loopRun = false;
+                        System.out.println("Name,Profession,Field of Work,Active Years,Awards,Journal Articles,Book Publications\n");
                     }
 
                     else if (userChoice == 1) {

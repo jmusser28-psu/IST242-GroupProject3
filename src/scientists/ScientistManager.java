@@ -70,58 +70,46 @@ public class ScientistManager {
 
     public void listScientists() {
         for (int i = 0; i < scientists.size(); i++) {
-            System.out.printf("Scientists %d: %s\n", (i + 1), scientists.get(i).getBasicInfo());
+            System.out.printf("Scientists %d: %s\n", (i + 1), scientists.get(i).getInfo("Basic"));
         }
     }
 
     public void listMathematicians() {
         for (int i = 0; i < mathematicians.size(); i++) {
-            System.out.printf("Mathematicians %d: %s\n", (i + 1), mathematicians.get(i).getBasicInfo());
+            System.out.printf("Mathematician %d: %s\n", (i + 1), mathematicians.get(i).getInfo("Basic"));
         }
     }
     public void listPhilosophers() {
         for (int i = 0; i < philosophers.size(); i++) {
-            System.out.printf("Philosophers %d: %s\n", (i + 1), philosophers.get(i).getBasicInfo());
+            System.out.printf("Philosopher %d: %s\n", (i + 1), philosophers.get(i).getInfo("Basic"));
         }
     }
     public void listLogicians() {
         for (int i = 0; i < logicians.size(); i++) {
-            System.out.printf("Logicians %d: %s\n", (i + 1), logicians.get(i).getBasicInfo());
+            System.out.printf("Logician %d: %s\n", (i + 1), logicians.get(i).getInfo("Basic"));
         }
     }
-    public void getLogicianInfo() {
+    public void getScientistsByProfession() {
+        for (int i = 0; i < mathematicians.size(); i++) {
+            System.out.println(mathematicians.get(i).getInfo("By Profession"));
+        }
+        for (int i = 0; i < philosophers.size(); i++) {
+            System.out.println(philosophers.get(i).getInfo("By Profession"));
+        }
         for (int i = 0; i < logicians.size(); i++) {
-            System.out.printf("Logicians %d: %s\n", (i + 1), logicians.get(i).getProfessionInfo());
+            System.out.println(logicians.get(i).getInfo("By Profession"));
         }
     }
 
-    public void getScientists() {
-        for (int i = 0; i < logicians.size(); i++) {
-            String name = logicians.get(i).getName();
-            String field = logicians.get(i).getFieldOfWork();
-            String awards = logicians.get(i).getAwards();
-            String journalArticles = logicians.get(i).getJournalArticles();
-            String bookPublications = logicians.get(i).getBookPublications();
-            System.out.printf("Name: %s\tField: %s\tAwards: %s\tJournal Articles: %s\tBook Publications: %s\n",
-                    name, field, awards, journalArticles, bookPublications);
-        }
+    public void getScientistsByField() {
         for (int i = 0; i < mathematicians.size(); i++) {
-            String name = mathematicians.get(i).getName();
-            String field = mathematicians.get(i).getFieldOfWork();
-            String awards = mathematicians.get(i).getAwards();
-            String journalArticles = mathematicians.get(i).getJournalArticles();
-            String bookPublications = mathematicians.get(i).getBookPublications();
-            System.out.printf("Name: %s\tField: %s\tAwards: %s\tJournal Articles: %s\tBook Publications: %s\n",
-                    name, field, awards, journalArticles, bookPublications);
+            System.out.println(mathematicians.get(i).getInfo("By Field of Work"));
         }
         for (int i = 0; i < philosophers.size(); i++) {
-            String name = philosophers.get(i).getName();
-            String field = philosophers.get(i).getFieldOfWork();
-            String awards = philosophers.get(i).getAwards();
-            String journalArticles = philosophers.get(i).getJournalArticles();
-            String bookPublications = philosophers.get(i).getBookPublications();
-            System.out.printf("Name: %s\tField: %s\tAwards: %s\tJournal Articles: %s\tBook Publications: %s\n",
-                    name, field, awards, journalArticles, bookPublications);
+            System.out.println(philosophers.get(i).getInfo("By Field of Work"));
+        }
+        for (int i = 0; i < logicians.size(); i++) {
+            System.out.println(logicians.get(i).getInfo("By Field of Work"));
         }
     }
 }

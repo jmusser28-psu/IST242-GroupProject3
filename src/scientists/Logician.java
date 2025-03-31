@@ -4,9 +4,9 @@ public class Logician extends Scientist {
     private String fieldOfWork;
     private String journalArticles;
     private String bookPublications;
-    public Logician(String name, String fieldOfWork, String activeYears, String awards, String profession,
+    public Logician(String name, String profession, String activeYears, String awards, String fieldOfWork,
                     String journalArticles, String bookPublications) {
-        super(name, fieldOfWork, activeYears, awards);
+        super(name, profession, activeYears, awards);
         this.fieldOfWork = fieldOfWork;
         this.journalArticles = journalArticles;
         this.bookPublications = bookPublications;
@@ -21,9 +21,21 @@ public class Logician extends Scientist {
     public String getBookPublications() {
         return bookPublications;
     }
+
     @Override
-    public String getProfessionInfo() {
-        return getBasicInfo() + " | Profession: " + getProfession() + " | Awards: " + getAwards() + " | Field of Work: " +
-                fieldOfWork;
+    public String getInfo(String type) {
+        String info = "";
+        if (type.equals("Basic")) {
+            info = super.getName() + " (" + super.getActiveYears() + ")";
+        }
+        else if (type.equals("By Profession")) {
+            info = "Profession: " + super.getProfession() + ", Name: " + super.getName() + ", Field of Work: " + fieldOfWork
+                    + ", Awards: " + super.getAwards();
+        }
+        else if (type.equals("By Field of Work")) {
+            info = "Field of Work: " + fieldOfWork + ", Name: " + super.getName() + ", Awards: " + super.getAwards()
+                    + ", Journal Articles: " + journalArticles + ", Book Publications: " + bookPublications;
+        }
+        return info;
     }
 }
