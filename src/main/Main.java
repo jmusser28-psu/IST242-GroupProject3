@@ -2,9 +2,7 @@ package main;
 
 import scientists.ScientistManager;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
@@ -40,6 +38,8 @@ public class Main {
             }
         }
 
+        reader.close();
+
         boolean run = true;
         byte userChoice = 0;
         while (run) {
@@ -53,6 +53,7 @@ public class Main {
             scnr.nextLine();
             if (userChoice == 0) {
                 run = false;
+                scientistManager.printScientistsFile();
             }
             else if (userChoice == 1) {
                 boolean loopRun = true;

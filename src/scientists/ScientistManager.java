@@ -1,5 +1,9 @@
 package scientists;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -111,5 +115,62 @@ public class ScientistManager {
         for (int i = 0; i < logicians.size(); i++) {
             System.out.println(logicians.get(i).getInfo("By Field of Work"));
         }
+    }
+
+    public void printScientistsFile() {
+        FileWriter fw = null;
+        BufferedWriter writer = null;
+        try {
+            fw = new FileWriter("scientistdata1.csv");
+            writer = new BufferedWriter(fw);
+
+            writer.write("Name,Profession,Field of Work,Active Years,Awards,Journal Articles,Book Publications\n");
+
+            for (int i = 0; i < mathematicians.size(); i++) {
+                String line = mathematicians.get(i).getName() + ","
+                        + mathematicians.get(i).getProfession() + ","
+                        + mathematicians.get(i).getFieldOfWork() + ","
+                        + mathematicians.get(i).getActiveYears() + ","
+                        + mathematicians.get(i).getAwards() + ","
+                        + mathematicians.get(i).getJournalArticles() + ","
+                        + mathematicians.get(i).getBookPublications() + "\n";
+
+                writer.write(line);
+            }
+
+            for (int i = 0; i < philosophers.size(); i++) {
+                String line = philosophers.get(i).getName() + ","
+                        + philosophers.get(i).getProfession() + ","
+                        + philosophers.get(i).getFieldOfWork() + ","
+                        + philosophers.get(i).getActiveYears() + ","
+                        + philosophers.get(i).getAwards() + ","
+                        + philosophers.get(i).getJournalArticles() + ","
+                        + philosophers.get(i).getBookPublications() + "\n";
+
+                writer.write(line);
+            }
+
+            for (int i = 0; i < logicians.size(); i++) {
+                String line = logicians.get(i).getName() + ","
+                        + logicians.get(i).getProfession() + ","
+                        + logicians.get(i).getFieldOfWork() + ","
+                        + logicians.get(i).getActiveYears() + ","
+                        + logicians.get(i).getAwards() + ","
+                        + logicians.get(i).getJournalArticles() + ","
+                        + logicians.get(i).getBookPublications() + "\n";
+
+                writer.write(line);
+            }
+
+            writer.close();
+
+        }
+        catch (FileNotFoundException e) {
+            System.out.println(e);
+        }
+        catch (IOException e) {
+            System.out.println(e);
+        }
+
     }
 }
