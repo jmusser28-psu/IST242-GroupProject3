@@ -29,11 +29,11 @@ public class Philosopher extends Scientist {
             info = super.getName() + " (" + super.getActiveYears() + ")";
         }
         else if (type.equals("By Profession")) {
-            info = "Profession: " + super.getProfession() + ", Name: " + super.getName() + ", Field of Work: " + fieldOfWork
+            info = "Name: " + super.getName() + ", Profession: " + super.getProfession() + ", Field of Work: " + fieldOfWork
                     + ", Awards: " + super.getAwards();
         }
         else if (type.equals("By Field of Work")) {
-            info = "Field of Work: " + fieldOfWork + ", Name: " + super.getName() + ", Awards: " + super.getAwards()
+            info = "Name: " + super.getName() + ", Field of Work: " + fieldOfWork + ", Awards: " + super.getAwards()
                     + ", Journal Articles: " + journalArticles + ", Book Publications: " + bookPublications;
         }
         return info;

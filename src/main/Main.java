@@ -114,7 +114,6 @@ public class Main {
 
                     if (userChoice == 0) {
                         loopRun = false;
-                        System.out.println("Name,Profession,Field of Work,Active Years,Awards,Journal Articles,Book Publications\n");
                     }
 
                     else if (userChoice == 1) {
@@ -122,18 +121,18 @@ public class Main {
                         name = scnr.nextLine();
                         System.out.print("Enter a field of work: ");
                         fieldOfWork = scnr.nextLine();
+                        profession = "Mathematician";
                         System.out.print("Enter active years (start year - end year): ");
                         activeYears = scnr.nextLine();
                         System.out.print("Enter awards: ");
                         awards = scnr.nextLine();
-                        profession = "Mathematician";
                         System.out.print("Enter number of articles: ");
                         journalArticles = scnr.nextLine();
                         System.out.print("Enter number of book publications: ");
                         bookPublications = scnr.nextLine();
 
-                        scientistManager.addMathematician(name, fieldOfWork,
-                                activeYears, awards, profession, journalArticles, bookPublications);
+                        scientistManager.addMathematician(name, profession,
+                                activeYears, awards, fieldOfWork, journalArticles, bookPublications);
                     }
 
                     else if (userChoice == 2) {
@@ -141,18 +140,18 @@ public class Main {
                         name = scnr.nextLine();
                         System.out.print("Enter a field of work: ");
                         fieldOfWork = scnr.nextLine();
+                        profession = "Mathematician";
                         System.out.print("Enter active years (start year - end year): ");
                         activeYears = scnr.nextLine();
                         System.out.print("Enter awards: ");
                         awards = scnr.nextLine();
-                        profession = "Philosopher";
                         System.out.print("Enter number of articles: ");
                         journalArticles = scnr.nextLine();
                         System.out.print("Enter number of book publications: ");
                         bookPublications = scnr.nextLine();
 
-                        scientistManager.addPhilosopher(name, fieldOfWork,
-                                activeYears, awards, profession, journalArticles, bookPublications);
+                        scientistManager.addPhilosopher(name, profession,
+                                activeYears, awards, fieldOfWork, journalArticles, bookPublications);
                     }
 
                     else if (userChoice == 3) {
@@ -160,18 +159,18 @@ public class Main {
                         name = scnr.nextLine();
                         System.out.print("Enter a field of work: ");
                         fieldOfWork = scnr.nextLine();
+                        profession = "Mathematician";
                         System.out.print("Enter active years (start year - end year): ");
                         activeYears = scnr.nextLine();
                         System.out.print("Enter awards: ");
                         awards = scnr.nextLine();
-                        profession = "Logician";
                         System.out.print("Enter number of articles: ");
                         journalArticles = scnr.nextLine();
                         System.out.print("Enter number of book publications: ");
                         bookPublications = scnr.nextLine();
 
-                        scientistManager.addLogician(name, fieldOfWork,
-                                activeYears, awards, profession, journalArticles, bookPublications);
+                        scientistManager.addLogician(name, profession,
+                                activeYears, awards, fieldOfWork, journalArticles, bookPublications);
                     }
                 }
             }
