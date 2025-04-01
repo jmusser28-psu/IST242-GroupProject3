@@ -165,9 +165,6 @@ public class ScientistManager {
             writer.close();
 
         }
-        catch (FileNotFoundException e) {
-            System.out.println(e);
-        }
         catch (IOException e) {
             System.out.println(e);
         }
