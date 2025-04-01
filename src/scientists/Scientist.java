@@ -14,7 +14,7 @@ public class Scientist {
     }
 
     public String getName() {
-        return  name;
+        return name;
     }
 
     public String getProfession() {
@@ -22,7 +22,7 @@ public class Scientist {
     }
 
     public String getActiveYears() {
-        return  activeYears;
+        return activeYears;
     }
 
     public String getAwards() {
