@@ -1,9 +1,8 @@
 package scientists;
 
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import utility.ByteValidation;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -42,12 +41,13 @@ public class ScientistManager {
     }
 
     public void removeScientist() {
+        ByteValidation bv = new ByteValidation();
+
         byte choice = 0;
         Scanner scnr = new Scanner(System.in);
         listScientists();
         System.out.print("Who would you like to remove (Number associated with Scientist): ");
-        choice = scnr.nextByte();
-        scnr.nextLine();
+        choice = bv.validate();
         choice -= 1;
         String scientist = scientists.get(choice).getName();
         scientists.remove(choice);
@@ -170,4 +170,44 @@ public class ScientistManager {
         }
 
     }
+    public void readScientistData(ScientistManager scientistManager) {
+        FileReader scientists = null;
+        BufferedReader reader = null;
+
+        try {
+            String fileName = "scientistdata.csv";
+            scientists = new FileReader(fileName);
+            reader = new BufferedReader(scientists);
+            String personInfo = "";
+            while ((personInfo = reader.readLine()) != null) {
+                if (!personInfo.contains("Name")) {
+                    String[] scientistInfo = personInfo.split(",");
+                    String name = scientistInfo[0];
+                    String profession = scientistInfo[1];
+                    String fieldOfWork = scientistInfo[2];
+                    String activeYears = scientistInfo[3];
+                    String awards = scientistInfo[4];
+                    String journalArticles = scientistInfo[5];
+                    String bookPublications = scientistInfo[6];
+
+                    if (profession.equalsIgnoreCase("Mathematician")) {
+                        scientistManager.addMathematician(name, profession, activeYears, awards, fieldOfWork, journalArticles, bookPublications);
+                    }
+                    if (profession.equalsIgnoreCase("Philosopher")) {
+                        scientistManager.addPhilosopher(name, profession, activeYears, awards, fieldOfWork, journalArticles, bookPublications);
+                    }
+                    if (profession.equalsIgnoreCase("Logician")) {
+                        scientistManager.addLogician(name, profession, activeYears, awards, fieldOfWork, journalArticles, bookPublications);
+                    }
+                }
+            }
+
+            reader.close();
+        }
+
+        catch (IOException e) {
+            System.err.println("Error Occurred: " + e.getMessage());
+        }
+    }
+
 }
