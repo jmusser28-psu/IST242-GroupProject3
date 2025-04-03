@@ -30,7 +30,7 @@ public class PrintMenu {
                 scientistManager.removeScientist();
             }
             else {
-                System.out.printf("Invalid choice %d\n", userChoice);
+                System.out.printf("Invalid choice: %d\n", userChoice);
             }
         }
     }
