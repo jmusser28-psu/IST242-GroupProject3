@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ScientistManager {
+    // Declares arraylists for the various scientists
     private ArrayList<Scientist> scientists = null;
     private ArrayList<Logician> logicians = null;
     private ArrayList<Mathematician> mathematicians = null;
     private ArrayList<Philosopher> philosophers = null;
 
+    // Constructs the arraylists used by a ScientistManager
     public ScientistManager() {
         scientists = new ArrayList<>();
         logicians = new ArrayList<>();
@@ -19,27 +21,37 @@ public class ScientistManager {
         philosophers = new ArrayList<>();
     }
 
+    // Adds a scientist to the scientist arraylist
     public void addScientist(String name, String fieldOfWork, String activeYears, String awards) {
         scientists.add(new Scientist(name, fieldOfWork, activeYears, awards));
     }
+    // Adds a logician to the logicians arraylist
+    // Adds a logician to the scientist arraylist
     public void addLogician(String name, String fieldOfWork, String activeYears, String awards, String profession,
                             String journalArticles, String bookPublications) {
         logicians.add(new Logician(name, fieldOfWork, activeYears, awards, profession, journalArticles, bookPublications));
         addScientist(name, fieldOfWork, activeYears, awards);
     }
 
+    // Adds a mathematician to the mathematicians arraylist
+    // Adds a mathematician to the scientist arraylist
     public void addMathematician(String name, String fieldOfWork, String activeYears, String awards, String profession,
                             String journalArticles, String bookPublications) {
         mathematicians.add(new Mathematician(name, fieldOfWork, activeYears, awards, profession, journalArticles, bookPublications));
         addScientist(name, fieldOfWork, activeYears, awards);
     }
 
+    // Adds a philosopher to the philosophers arraylist
+    // Adds a philosopher to the scientist arraylist
     public void addPhilosopher(String name, String fieldOfWork, String activeYears, String awards, String profession,
                                  String journalArticles, String bookPublications) {
         philosophers.add(new Philosopher(name, fieldOfWork, activeYears, awards, profession, journalArticles, bookPublications));
         addScientist(name, fieldOfWork, activeYears, awards);
     }
 
+    // Removes a scientist from the scientist arraylist and the arraylist of their profession
+    // Removes the scientist from the respective profession by iterating through all the specific profession arraylists
+    // and removes the scientist if there is a match
     public void removeScientist() {
         ByteValidation bv = new ByteValidation();
 
@@ -48,6 +60,7 @@ public class ScientistManager {
         listScientists();
         System.out.print("Who would you like to remove (Number associated with Scientist): ");
         choice = bv.validate();
+        // Converts user readable input to a valid index
         choice -= 1;
         String scientist = scientists.get(choice).getName();
         scientists.remove(choice);
@@ -72,27 +85,35 @@ public class ScientistManager {
 
     }
 
+    // Lists all scientists with their basic info
     public void listScientists() {
         for (int i = 0; i < scientists.size(); i++) {
             System.out.printf("Scientists %d: %s\n", (i + 1), scientists.get(i).getInfo("Basic"));
         }
     }
 
+    // Lists all mathematicians with their basic info
     public void listMathematicians() {
         for (int i = 0; i < mathematicians.size(); i++) {
             System.out.printf("Mathematician %d: %s\n", (i + 1), mathematicians.get(i).getInfo("Basic"));
         }
     }
+
+    // Lists all philosophers with their basic info
     public void listPhilosophers() {
         for (int i = 0; i < philosophers.size(); i++) {
             System.out.printf("Philosopher %d: %s\n", (i + 1), philosophers.get(i).getInfo("Basic"));
         }
     }
+
+    // Lists all logicians with their basic info
     public void listLogicians() {
         for (int i = 0; i < logicians.size(); i++) {
             System.out.printf("Logician %d: %s\n", (i + 1), logicians.get(i).getInfo("Basic"));
         }
     }
+
+    // Lists all scientists by their profession
     public void getScientistsByProfession() {
         for (int i = 0; i < mathematicians.size(); i++) {
             System.out.println(mathematicians.get(i).getInfo("By Profession"));
@@ -105,6 +126,7 @@ public class ScientistManager {
         }
     }
 
+    // Lists all scientists by their field of work
     public void getScientistsByField() {
         for (int i = 0; i < mathematicians.size(); i++) {
             System.out.println(mathematicians.get(i).getInfo("By Field of Work"));
@@ -117,6 +139,8 @@ public class ScientistManager {
         }
     }
 
+    // Outputs the final specific arraylists (mathematician, logician, philosopher) to the file,
+    // formatted in the same way as the original CSV file was
     public void printScientistsFile() {
         FileWriter fw = null;
         BufferedWriter writer = null;
@@ -170,6 +194,8 @@ public class ScientistManager {
         }
 
     }
+
+    // Reads the CSV file and adds the scientists to the scientist arraylist and their respective profession arraylist
     public void readScientistData(ScientistManager scientistManager) {
         FileReader scientists = null;
         BufferedReader reader = null;
@@ -180,6 +206,7 @@ public class ScientistManager {
             reader = new BufferedReader(scientists);
             String personInfo = "";
             while ((personInfo = reader.readLine()) != null) {
+                // Checks if the line is not the first line of the CSV file
                 if (!personInfo.contains("Name")) {
                     String[] scientistInfo = personInfo.split(",");
                     String name = scientistInfo[0];

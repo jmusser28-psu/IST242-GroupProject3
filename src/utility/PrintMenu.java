@@ -5,9 +5,11 @@ import scientists.ScientistManager;
 import java.util.Scanner;
 
 public class PrintMenu {
+    // Prints the menu that the user interacts with
     public static void mainMenu(ScientistManager scientistManager, ByteValidation bv, Scanner scnr) {
         boolean run = true;
         byte userChoice = 0;
+        // Keep the loop running until the user is finished
         while (run) {
             System.out.println("---Scientists---");
             System.out.println("0.) Exit");
@@ -16,24 +18,44 @@ public class PrintMenu {
             System.out.println("3.) Remove Scientists");
             System.out.print("Please enter a choice (0-3): ");
             userChoice = bv.validate();
+            // End the loop, and print the updated information to the CSV file
             if (userChoice == 0) {
                 run = false;
                 scientistManager.printScientistsFile();
             }
+
+            // Passes scientistManager and bv (byteValidate) to the listScientists method of this class
+            // so the user can request the lists of scientists by organizations
             else if (userChoice == 1) {
                 listScientists(scientistManager, bv);
             }
+
+            // Passes scientistManager and bv to the addScientists method of this class
             else if (userChoice == 2) {
                 addScientists(scientistManager, bv, scnr);
             }
+
+            // Calls the removeScientist method of scientistManager
+            // This is done so that the arraylists can be modified
             else if (userChoice == 3) {
                 scientistManager.removeScientist();
             }
+
+            // Prints an invalid choice
             else {
                 System.out.printf("Invalid choice: %d\n", userChoice);
             }
         }
     }
+
+    // Lists the scientists by different organizations
+    // Option 1, 5, and 6 were required for this project.
+    // Option 1 is names and active years
+    // Option 5 is the list of scientists by their profession, field of work, and awards
+    // Option 6 is the list of scientists by their field of work, awards, journals, and book publications
+    // Options 5 and 6 also include the names of the scientists so that they can be identified easily
+    // Options 2, 3, and 4 were not required for this project but made sense to include.
+    // Options 2, 3, and 4 just print the basic information for the scientists in specific professions
     public static void listScientists(ScientistManager scientistManager, ByteValidation bv) {
         byte userChoice = 0;
         boolean loopRun = true;
@@ -80,6 +102,8 @@ public class PrintMenu {
         boolean loopRun = true;
         while (loopRun) {
             byte userChoice = 0;
+
+            // Declares the variables needed to create a new scientist
             String name = "";
             String fieldOfWork = "";
             String activeYears = "";
@@ -99,6 +123,8 @@ public class PrintMenu {
                 loopRun = false;
             }
 
+            // Gathers info needed to create a mathematician
+            // Creates a new mathematician
             else if (userChoice == 1) {
                 System.out.print("Enter a name: ");
                 name = scnr.nextLine();
@@ -118,6 +144,8 @@ public class PrintMenu {
                         activeYears, awards, fieldOfWork, journalArticles, bookPublications);
             }
 
+            // Gathers info needed to create a philosopher
+            // Creates a new philosopher
             else if (userChoice == 2) {
                 System.out.print("Enter a name: ");
                 name = scnr.nextLine();
@@ -137,6 +165,8 @@ public class PrintMenu {
                         activeYears, awards, fieldOfWork, journalArticles, bookPublications);
             }
 
+            // Gathers info needed to create a logician
+            // Creates a new logician
             else if (userChoice == 3) {
                 System.out.print("Enter a name: ");
                 name = scnr.nextLine();
