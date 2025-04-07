@@ -1,4 +1,4 @@
-// Please note that this project will contain an unmodified scientists.csv file
+// Please note that this project will contain an unmodified scientistsdata.csv file
 // It will be updated once the user choices to exit the program
 // This is so that you can verify that the project does output to a file
 
